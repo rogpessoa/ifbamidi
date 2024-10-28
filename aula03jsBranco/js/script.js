@@ -1,6 +1,6 @@
 import ehUmCpf from "./valida-cpf.js";
 import ehMaiorDeIdade from "./valida-idade.js";
-
+import validaNome from "./valida-nome.js";
 const camposDoFormulario = document.querySelectorAll("[required]");
 const formulario = document.querySelector('[data-formulario]');
 
@@ -68,6 +68,9 @@ const mensagens = {
 function verificaCampo(campo){
     let mensagem = "";
     campo.setCustomValidity('');
+    if (campo.name == 'nome'){
+        validaNome(campo);
+    }
     if(campo.name == "cpf" && campo.value.length >=11){
         ehUmCpf(campo);
     }
